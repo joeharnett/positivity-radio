@@ -93,7 +93,7 @@ export default function NoelEdmondsSection() {
               <img 
                 src="/images/section4/kiwi-adventure-mountains.png" 
                 alt="Noel Edmonds Kiwi Adventure"
-                className="w-full h-48 object-cover"
+                className="w-full h-56 md:h-104 object-cover"
               />
             </div>
             <h3 className="font-opensans text-lg font-semibold mb-2" style={{ color: 'var(--color-positivity-blue)' }}>
@@ -117,7 +117,7 @@ export default function NoelEdmondsSection() {
               <img 
                 src="/images/section4/noel-vineyard-outdoor.png" 
                 alt="Noel Edmonds in vineyard"
-                className="w-full h-48 object-cover"
+                className="w-full h-76 md:h-104 object-cover"
               />
             </div>
             <h3 className="font-opensans text-lg font-semibold mb-2" style={{ color: 'var(--color-positivity-blue)' }}>
@@ -143,7 +143,7 @@ export default function NoelEdmondsSection() {
               <img 
                 src="/images/section4/noel-radio1-vintage.png" 
                 alt="Noel Edmonds Radio 1"
-                className="w-full h-48 object-cover"
+                className="w-full h-56 md:h-104 object-cover"
               />
             </div>
             <h3 className="font-opensans text-lg font-semibold" style={{ color: 'var(--color-positivity-blue)' }}>

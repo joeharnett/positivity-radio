@@ -90,7 +90,7 @@ export default function RadioStationsSection() {
     >
       <div className="container mx-auto px-4">
         <motion.div 
-          className="grid lg:grid-cols-12 gap-12 items-start"
+          className="grid lg:grid-cols-12 gap-12 items-center"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -125,11 +125,11 @@ export default function RadioStationsSection() {
               {stations.map((station, index) => (
                 <motion.div 
                   key={station.id} 
-                  className="station-card p-6 text-center"
+                  className="station-card p-4 lg:p-0 lg:pb-2 text-center"
                   variants={cardVariants}
                   custom={index}
                 >
-                  <div className="w-full h-32 rounded-lg mb-4 overflow-hidden">
+                  <div className="w-full h-92 md:h-86 lg:h-88 rounded-lg mb-4 overflow-hidden">
                     <img 
                       src={station.image} 
                       alt={station.title}

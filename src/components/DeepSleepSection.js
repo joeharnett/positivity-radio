@@ -183,11 +183,11 @@ export default function DeepSleepSection() {
               {stations.map((station, index) => (
                 <motion.div 
                   key={station.id} 
-                  className="bg-white rounded-lg p-4 text-center shadow-md"
+                  className="bg-white rounded-lg p-2 text-center shadow-md"
                   variants={stationVariants}
                   custom={index}
                 >
-                  <div className="w-full h-20 rounded-lg mb-3 overflow-hidden">
+                  <div className="w-full h-44 md:h-48 rounded-lg mb-3 overflow-hidden">
                     <img 
                       src={station.image} 
                       alt={station.title} 

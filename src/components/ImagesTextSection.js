@@ -70,16 +70,19 @@ export default function ImagesTextSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           
-          {/* Left Column - Images */}
-          <motion.div className="space-y-6" variants={imageVariants}>
-            <div className="rounded-lg overflow-hidden shadow-lg">
+          {/* Left Column - Images with overlapping effect on desktop */}
+          <motion.div className="relative h-96 lg:h-[500px]" variants={imageVariants}>
+            {/* First Image */}
+            <div className="rounded-lg overflow-hidden shadow-lg mb-6 lg:mb-0 lg:absolute lg:top-0 lg:left-0 lg:w-4/5 lg:z-10">
               <img 
                 src="/images/section2/person-arms-up-celebration.png" 
                 alt="Person celebrating with arms outstretched"
                 className="w-full h-64 md:h-80 object-cover"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-lg">
+            
+            {/* Second Image - Overlapping on desktop, stacked on mobile */}
+            <div className="rounded-lg overflow-hidden shadow-lg lg:absolute lg:top-32 lg:right-0 lg:w-4/5 lg:z-20">
               <img 
                 src="/images/section2/group-people-arms-up.png" 
                 alt="Group of people celebrating together"

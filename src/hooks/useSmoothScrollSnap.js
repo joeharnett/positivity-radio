@@ -18,7 +18,7 @@ export const useSmoothScrollSnap = () => {
 
       e.preventDefault()
       
-      const sections = document.querySelectorAll('section')
+      const sections = document.querySelectorAll('section, footer')
       const currentScrollY = window.scrollY
       const windowHeight = window.innerHeight
       
@@ -26,18 +26,23 @@ export const useSmoothScrollSnap = () => {
       let currentSectionIndex = 0
       sections.forEach((section, index) => {
         const sectionTop = section.offsetTop
-        if (currentScrollY >= sectionTop - windowHeight / 2) {
+        const sectionHeight = section.offsetHeight
+        
+        // Check if we're in this section
+        if (currentScrollY >= sectionTop - windowHeight / 3 && 
+            currentScrollY < sectionTop + sectionHeight - windowHeight / 3) {
           currentSectionIndex = index
         }
       })
 
-      // Determine scroll direction
-      const isScrollingDown = e.deltaY > 0
+      // Determine scroll direction - be more sensitive to small movements
+      const isScrollingDown = e.deltaY > 5
+      const isScrollingUp = e.deltaY < -5
       
       let targetSection
       if (isScrollingDown && currentSectionIndex < sections.length - 1) {
         targetSection = sections[currentSectionIndex + 1]
-      } else if (!isScrollingDown && currentSectionIndex > 0) {
+      } else if (isScrollingUp && currentSectionIndex > 0) {
         targetSection = sections[currentSectionIndex - 1]
       } else {
         // If at the beginning or end, scroll to current section center
@@ -56,11 +61,12 @@ export const useSmoothScrollSnap = () => {
         clearTimeout(scrollTimeout)
         scrollTimeout = setTimeout(() => {
           isScrolling = false
-        }, 1000)
+        }, 1200) // Increased timeout to prevent interference
       }
     }
 
     // Add wheel event listener with passive: false to allow preventDefault
+    // This handles both mouse wheel and trackpad
     document.addEventListener('wheel', handleWheel, { passive: false })
 
     return () => {
