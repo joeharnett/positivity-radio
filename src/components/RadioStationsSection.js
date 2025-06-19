@@ -99,8 +99,6 @@ export default function RadioStationsSection() {
           {/* Left Column - Content (4 columns) */}
           <motion.div className="lg:col-span-4 space-y-6" variants={textVariants}>
             <div className="relative">
-              {/* Decorative Sparkle */}
-              <div className="absolute -top-4 -right-4 text-yellow-500 text-2xl sparkle">✨</div>
               <h2 className="font-roca text-3xl md:text-4xl lg:text-5xl leading-tight" style={{ color: 'var(--color-positivity-blue)' }}>
                 Over 50 Radio Stations News Free Commercial Free Listen Free
               </h2>

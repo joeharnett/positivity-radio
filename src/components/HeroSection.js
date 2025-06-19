@@ -115,7 +115,7 @@ export default function HeroSection() {
         initial="hidden"
         animate="visible"
       >
-        <div className="w-26 h-26 md:w-20 md:h-20 overflow-hidden shadow-lg flex-shrink-0">
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-4 border-white shadow-lg flex-shrink-0">
           <img 
             src="/images/hero/noel-edmonds-circle.png" 
             alt="Noel Edmonds"
@@ -124,10 +124,10 @@ export default function HeroSection() {
         </div>
         
         <div>
-          <blockquote className="font-opensans text-sm md:text-base mb-2 text-shadow">
+          <blockquote className="font-opensans text-sm md:text-xl mb-2 text-shadow">
             &quot;Welcome to the positivity family. With over 50 stations to choose from, I hope you find they help uplift your spirits and brighten your day.&quot;
           </blockquote>
-          <cite className="font-playlist text-lg md:text-xl italic text-shadow">
+          <cite className="font-playlist text-lg md:text-2xl italic text-shadow">
             Noel Edmonds
           </cite>
         </div>
@@ -142,7 +142,7 @@ export default function HeroSection() {
       >
         <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto mb-4">
           <img 
-            src="/images/hero/noel-edmonds-circle.jpg" 
+            src="/images/hero/noel-edmonds-circle.png" 
             alt="Noel Edmonds"
             className="w-full h-full object-cover"
           />
@@ -153,24 +153,6 @@ export default function HeroSection() {
         <cite className="font-playlist text-lg italic text-shadow">
           Noel Edmonds
         </cite>
-      </motion.div>
-      
-      {/* Decorative Sparkles */}
-      <motion.div 
-        className="absolute top-20 right-20 text-yellow-300 text-2xl sparkle hidden lg:block"
-        variants={sparkleVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        ✨
-      </motion.div>
-      <motion.div 
-        className="absolute top-40 right-32 text-yellow-300 text-3xl sparkle-delay hidden lg:block"
-        variants={sparkleVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        ✨
       </motion.div>
     </section>
   )

@@ -163,7 +163,6 @@ export default function NoelEdmondsSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 text-yellow-500 text-2xl sparkle">✨</div>
           <button className="btn-primary">
             Listen Now
           </button>

@@ -126,19 +126,6 @@ export default function DeepSleepSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* Decorative Sparkles */}
-          <motion.div 
-            className="absolute top-0 left-8 text-yellow-300 text-2xl sparkle"
-            variants={sparkleVariants}
-          >
-            ✨
-          </motion.div>
-          <motion.div 
-            className="absolute top-8 left-16 text-yellow-300 text-3xl sparkle-delay"
-            variants={sparkleVariants}
-          >
-            ✨
-          </motion.div>
           
           <h2 className="font-roca text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
             From Deep Sleep to Daily Uplift<br />

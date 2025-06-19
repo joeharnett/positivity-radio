@@ -115,7 +115,6 @@ export default function ImagesTextSection() {
             
             {/* CTA Button with Sparkle */}
             <motion.div className="relative pt-8" variants={buttonVariants}>
-              <div className="absolute -top-2 -left-2 text-yellow-500 text-2xl sparkle">✨</div>
               <button className="btn-primary">
                 Listen Now
               </button>

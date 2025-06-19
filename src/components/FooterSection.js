@@ -73,19 +73,6 @@ export default function FooterSection() {
           
           {/* Main Heading */}
           <motion.div className="relative" variants={itemVariants}>
-            {/* Decorative Sparkles */}
-            <motion.div 
-              className="absolute -top-8 -right-8 text-yellow-500 text-2xl sparkle"
-              variants={sparkleVariants}
-            >
-              ✨
-            </motion.div>
-            <motion.div 
-              className="absolute -top-4 -right-16 text-yellow-500 text-3xl sparkle-delay"
-              variants={sparkleVariants}
-            >
-              ✨
-            </motion.div>
             
             <h2 className="font-roca text-2xl md:text-3xl lg:text-4xl max-w-4xl mx-auto leading-relaxed" style={{ color: 'var(--color-positivity-blue)' }}>
               Positivity Radio is available on the You.Radio App or online. Discover your own personal soundtrack to a more positive life.
@@ -98,7 +85,6 @@ export default function FooterSection() {
               className="absolute -top-6 -left-6 text-yellow-500 text-2xl sparkle"
               variants={sparkleVariants}
             >
-              ✨
             </motion.div>
             <button className="btn-primary text-xl px-10 py-4">
               Listen Now
@@ -107,7 +93,7 @@ export default function FooterSection() {
           
           {/* Logo */}
           <motion.div className="py-8" variants={logoVariants}>
-            <div className="w-32 h-32 mx-auto">
+            <div className="w-32 h-32 mx-auto rounded-lg p-4">
               <img 
                 src="/images/footer/positivity-logo-geometric.png" 
                 alt="Positivity Radio Logo"
@@ -139,7 +125,7 @@ export default function FooterSection() {
           
           {/* Social Media */}
           <motion.div className="flex items-center justify-center space-x-8" variants={itemVariants}>
-            <div className="w-12 h-12">
+            <div className="w-12 h-12 rounded-lg p-2">
               <img 
                 src="/images/footer/instagram-icon.svg" 
                 alt="Instagram"
