@@ -158,6 +158,11 @@ export default function FooterSection() {
             © 2025 Positivity Radio - All rights reserved.
           </p>
         </div>
+        <div className="container mx-auto px-4 text-center">
+          <p className="font-opensans text-white text-sm">
+            Designed & Developed by BKA Digital
+          </p>
+        </div>
       </motion.div>
       
     </footer>

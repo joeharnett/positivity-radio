@@ -110,12 +110,12 @@ export default function HeroSection() {
       
       {/* Quote Section - Desktop */}
       <motion.div 
-        className="absolute bottom-8 left-8 lg:bottom-16 lg:left-16 hidden md:flex items-end space-x-4 text-white max-w-md"
+        className="absolute bottom-8 left-8 lg:bottom-16 lg:left-16 hidden md:flex items-end text-white max-w-md"
         variants={quoteVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-4 border-white shadow-lg flex-shrink-0">
+        <div className="w-16 h-16 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg flex-shrink-0">
           <img 
             src="/images/hero/noel-edmonds-circle.png" 
             alt="Noel Edmonds"
@@ -124,10 +124,10 @@ export default function HeroSection() {
         </div>
         
         <div>
-          <blockquote className="font-opensans text-sm md:text-xl mb-2 text-shadow">
+          <blockquote className="font-opensans text-sm md:text-2xl mb-2 text-shadow">
             &quot;Welcome to the positivity family. With over 50 stations to choose from, I hope you find they help uplift your spirits and brighten your day.&quot;
           </blockquote>
-          <cite className="font-playlist text-lg md:text-2xl italic text-shadow">
+          <cite className="font-playlist text-lg md:text-3xl italic text-shadow">
             Noel Edmonds
           </cite>
         </div>

@@ -106,7 +106,7 @@ export default function NoelEdmondsSection() {
               <img 
                 src="/images/section4/itv-logo.png" 
                 alt="ITV Logo"
-                className="h-8"
+                className="h-18"
               />
             </div>
           </motion.div>
