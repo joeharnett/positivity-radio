@@ -114,7 +114,7 @@ export default function DeepSleepSection() {
   return (
     <section 
       ref={ref}
-      className="min-h-screen flex items-center py-16 lg:py-24" 
+      className="min-h-screen flex items-center py-16 lg:py-14" 
       style={{ backgroundColor: 'var(--color-positivity-blue)' }}
     >
       <div className="container mx-auto px-4">
@@ -149,8 +149,114 @@ export default function DeepSleepSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           
-          {/* Left Column - Phone Mockup */}
-          <motion.div className="lg:col-span-5 xl:col-span-4" variants={phoneVariants}>
+          {/* Layout for all screens EXCEPT 1024-1279px */}
+          <>
+            {/* Left Column - Phone Mockup (hidden on 1024-1279px) */}
+            <motion.div className="lg:col-span-5 xl:col-span-4 hidden xl:block" variants={phoneVariants}>
+              <div className="bg-white rounded-3xl p-6 shadow-2xl max-w-sm mx-auto">
+                <img 
+                  src="/images/section5/phone-app-mockup.png" 
+                  alt="Positivity Radio App"
+                  className="w-full h-auto"
+                />
+              </div>
+            </motion.div>
+            
+            {/* Right Column - Station Grid (hidden on 1024-1279px) */}
+            <div className="lg:col-span-7 xl:col-span-8 hidden xl:block">
+              <motion.div 
+                className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4"
+                variants={containerVariants}
+              >
+                
+                {stations.map((station, index) => (
+                  <motion.div 
+                    key={station.id} 
+                    className="bg-white rounded-lg p-2 text-center shadow-md"
+                    variants={stationVariants}
+                    custom={index}
+                  >
+                    <div className="w-full h-56 md:h-62 rounded-lg mb-3 overflow-hidden">
+                      <img 
+                        src={station.image} 
+                        alt={station.title} 
+                        className="w-full h-full object-contain" 
+                      />
+                    </div>
+                    <h3 className="font-opensans text-xs font-semibold" style={{ color: 'var(--color-positivity-blue)' }}>
+                      {station.title}
+                    </h3>
+                  </motion.div>
+                ))}
+                
+              </motion.div>
+            </div>
+          </>
+          
+        </motion.div>
+
+        {/* Carousel Layout for 1024-1279px screens ONLY */}
+        <motion.div 
+          className="deepsleep-carousel hidden lg:flex xl:hidden mt-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {/* First group */}
+          <div className="deepsleep-carousel-group">
+            {stations.map((station, index) => (
+              <motion.div 
+                key={`group1-${station.id}`} 
+                className="station-card bg-white rounded-lg p-6 text-center shadow-md"
+                variants={stationVariants}
+                custom={index}
+              >
+                <div className="h-80 rounded-lg mb-6 overflow-hidden">
+                  <img 
+                    src={station.image} 
+                    alt={station.title} 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
+                <h3 className="font-opensans text-lg font-semibold" style={{ color: 'var(--color-positivity-blue)' }}>
+                  {station.title}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Duplicate group for seamless loop */}
+          <div className="deepsleep-carousel-group" aria-hidden="true">
+            {stations.map((station) => (
+              <div 
+                key={`group2-${station.id}`} 
+                className="station-card bg-white rounded-lg p-6 text-center shadow-md"
+              >
+                <div className="h-80 rounded-lg mb-6 overflow-hidden">
+                  <img 
+                    src={station.image} 
+                    alt={station.title} 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
+                <h3 className="font-opensans text-lg font-semibold" style={{ color: 'var(--color-positivity-blue)' }}>
+                  {station.title}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Original Layout for smaller screens */}
+        <motion.div 
+          className="lg:hidden grid grid-cols-1 gap-8 mt-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          
+          {/* Phone Mockup for smaller screens */}
+          <motion.div variants={phoneVariants}>
             <div className="bg-white rounded-3xl p-6 shadow-2xl max-w-sm mx-auto">
               <img 
                 src="/images/section5/phone-app-mockup.png" 
@@ -160,36 +266,33 @@ export default function DeepSleepSection() {
             </div>
           </motion.div>
           
-          {/* Right Column - Station Grid */}
-          <div className="lg:col-span-7 xl:col-span-8">
-            <motion.div 
-              className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4"
-              variants={containerVariants}
-            >
-              
-              {stations.map((station, index) => (
-                <motion.div 
-                  key={station.id} 
-                  className="bg-white rounded-lg p-2 text-center shadow-md"
-                  variants={stationVariants}
-                  custom={index}
-                >
-                  <div className="w-full h-44 md:h-48 rounded-lg mb-3 overflow-hidden">
-                    <img 
-                      src={station.image} 
-                      alt={station.title} 
-                      className="w-full h-full object-cover" 
-                    />
-                  </div>
-                  <h3 className="font-opensans text-xs font-semibold" style={{ color: 'var(--color-positivity-blue)' }}>
-                    {station.title}
-                  </h3>
-                </motion.div>
-              ))}
-              
-            </motion.div>
-          </div>
-          
+          {/* Station Grid for smaller screens */}
+          <motion.div 
+            className="grid grid-cols-2 gap-4"
+            variants={containerVariants}
+          >
+            
+            {stations.map((station, index) => (
+              <motion.div 
+                key={station.id} 
+                className="bg-white rounded-lg p-2 text-center shadow-md"
+                variants={stationVariants}
+                custom={index}
+              >
+                <div className="w-full h-56 md:h-62 rounded-lg mb-3 overflow-hidden">
+                  <img 
+                    src={station.image} 
+                    alt={station.title} 
+                    className="w-full h-full object-contain" 
+                  />
+                </div>
+                <h3 className="font-opensans text-xs font-semibold" style={{ color: 'var(--color-positivity-blue)' }}>
+                  {station.title}
+                </h3>
+              </motion.div>
+            ))}
+            
+          </motion.div>
         </motion.div>
       </div>
     </section>

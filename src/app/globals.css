@@ -227,6 +227,43 @@ video {
   }
 }
 
+/* Deep Sleep section carousel for 1024px-1279px screens */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .deepsleep-carousel {
+    display: flex !important;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .deepsleep-carousel-group {
+    display: flex;
+    gap: 3rem;
+    padding-right: 3rem;
+    flex: 0 0 100%;
+    will-change: transform;
+    animation: scrolling-deepsleep 20s linear infinite;
+  }
+  
+  .deepsleep-carousel .station-card {
+    flex: 0 0 350px;
+    width: 350px;
+    min-width: 350px;
+  }
+  
+  .deepsleep-carousel:hover .deepsleep-carousel-group {
+    animation-play-state: paused;
+  }
+  
+  @keyframes scrolling-deepsleep {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
 /* Font Classes */
 .font-viga {
   font-family: "Viga", sans-serif;
