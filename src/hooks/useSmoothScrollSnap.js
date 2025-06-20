@@ -5,14 +5,25 @@ import { useEffect } from 'react'
 export const useSmoothScrollSnap = () => {
   useEffect(() => {
     let isScrolling = false
-    let scrollTimeout
+    let accumulatedDelta = 0
 
-    const handleWheel = (e) => {
-      // Only apply on desktop (screens wider than 1024px)
+    const handleScroll = (e) => {
+      // Only apply on desktop
       if (window.innerWidth < 1024) return
 
       if (isScrolling) {
         e.preventDefault()
+        return
+      }
+
+      // Accumulate scroll delta for trackpad support
+      accumulatedDelta += Math.abs(e.deltaY)
+
+      if (accumulatedDelta < 50) {
+        // Reset accumulator after short delay for small movements
+        setTimeout(() => {
+          if (!isScrolling) accumulatedDelta = 0
+        }, 200)
         return
       }
 
@@ -26,52 +37,45 @@ export const useSmoothScrollSnap = () => {
       let currentSectionIndex = 0
       sections.forEach((section, index) => {
         const sectionTop = section.offsetTop
-        const sectionHeight = section.offsetHeight
-        
-        // Check if we're in this section
-        if (currentScrollY >= sectionTop - windowHeight / 3 && 
-            currentScrollY < sectionTop + sectionHeight - windowHeight / 3) {
+        if (currentScrollY >= sectionTop - windowHeight / 2) {
           currentSectionIndex = index
         }
       })
 
-      // Determine scroll direction - be more sensitive to small movements
-      const isScrollingDown = e.deltaY > 5
-      const isScrollingUp = e.deltaY < -5
-      
+      // Determine scroll direction
       let targetSection
-      if (isScrollingDown && currentSectionIndex < sections.length - 1) {
+      if (e.deltaY > 0 && currentSectionIndex < sections.length - 1) {
+        // Scrolling down
         targetSection = sections[currentSectionIndex + 1]
-      } else if (isScrollingUp && currentSectionIndex > 0) {
+      } else if (e.deltaY < 0 && currentSectionIndex > 0) {
+        // Scrolling up
         targetSection = sections[currentSectionIndex - 1]
-      } else {
-        // If at the beginning or end, scroll to current section center
-        targetSection = sections[currentSectionIndex]
       }
 
       if (targetSection) {
         isScrolling = true
-        
+        accumulatedDelta = 0
+
+        // Use browser's native smooth scroll - it's naturally slower and more reliable
         targetSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         })
 
-        // Reset scrolling flag after animation
-        clearTimeout(scrollTimeout)
-        scrollTimeout = setTimeout(() => {
+        // Allow next scroll after animation time
+        setTimeout(() => {
           isScrolling = false
-        }, 1200) // Increased timeout to prevent interference
+        }, 1500) // Reduced timeout since we're not controlling the animation
       }
     }
 
-    // Add wheel event listener with passive: false to allow preventDefault
-    // This handles both mouse wheel and trackpad
-    document.addEventListener('wheel', handleWheel, { passive: false })
+    // Listen to all scroll-related events
+    document.addEventListener('wheel', handleScroll, { passive: false })
+    document.addEventListener('touchmove', handleScroll, { passive: false })
 
     return () => {
-      document.removeEventListener('wheel', handleWheel)
-      clearTimeout(scrollTimeout)
+      document.removeEventListener('wheel', handleScroll)
+      document.removeEventListener('touchmove', handleScroll)
     }
   }, [])
 }

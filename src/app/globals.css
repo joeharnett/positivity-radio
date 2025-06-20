@@ -12,6 +12,24 @@
   --font-family-opensans: "Open Sans", sans-serif;
 }
 
+/* Custom scroll behavior - slower smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+/* Make sections snap points */
+section, footer {
+  scroll-snap-align: start;
+}
+
+/* Slower smooth scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Font Face Declarations */
 @font-face {
   font-family: 'Viga';
@@ -80,10 +98,6 @@
 /* Global Styles */
 * {
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
