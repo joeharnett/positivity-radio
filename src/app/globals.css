@@ -191,6 +191,42 @@ video {
   transform: translateY(-2px);
 }
 
+/* Infinite carousel for mid-range screens (1024px-1535px) */
+@media (min-width: 1024px) and (max-width: 1535px) {
+  .station-carousel {
+    display: flex !important;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .station-carousel-group {
+    display: flex;
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+    flex: 0 0 100%;
+    will-change: transform;
+    animation: scrolling 15s linear infinite;
+  }
+  
+  .station-carousel .station-card {
+    flex: 0 0 300px;
+    width: 300px;
+  }
+  
+  .station-carousel:hover .station-carousel-group {
+    animation-play-state: paused;
+  }
+  
+  @keyframes scrolling {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
 /* Font Classes */
 .font-viga {
   font-family: "Viga", sans-serif;

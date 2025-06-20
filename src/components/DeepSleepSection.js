@@ -143,14 +143,14 @@ export default function DeepSleepSection() {
         
         {/* Main Content Grid */}
         <motion.div 
-          className="grid lg:grid-cols-12 gap-12 items-center"
+          className="grid lg:grid-cols-12 gap-12 xl:gap-6 items-center"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           
           {/* Left Column - Phone Mockup */}
-          <motion.div className="lg:col-span-5" variants={phoneVariants}>
+          <motion.div className="lg:col-span-5 xl:col-span-4" variants={phoneVariants}>
             <div className="bg-white rounded-3xl p-6 shadow-2xl max-w-sm mx-auto">
               <img 
                 src="/images/section5/phone-app-mockup.png" 
@@ -161,9 +161,9 @@ export default function DeepSleepSection() {
           </motion.div>
           
           {/* Right Column - Station Grid */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 xl:col-span-8">
             <motion.div 
-              className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4"
               variants={containerVariants}
             >
               

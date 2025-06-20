@@ -89,8 +89,9 @@ export default function RadioStationsSection() {
       className="bg-white min-h-screen flex items-center py-16 lg:py-24"
     >
       <div className="container mx-auto px-4">
+        {/* Layout for larger screens (1536px+) - Side by side */}
         <motion.div 
-          className="grid lg:grid-cols-12 gap-12 items-center"
+          className="hidden 2xl:grid lg:grid-cols-12 gap-12 items-center"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -116,18 +117,17 @@ export default function RadioStationsSection() {
           {/* Right Column - Radio Stations Grid (8 columns) */}
           <div className="lg:col-span-8">
             <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-3 gap-6"
               variants={containerVariants}
             >
-              
               {stations.map((station, index) => (
                 <motion.div 
                   key={station.id} 
-                  className="station-card p-4 lg:p-0 lg:pb-2 text-center"
+                  className="station-card p-0 pb-2 text-center"
                   variants={cardVariants}
                   custom={index}
                 >
-                  <div className="w-full h-92 md:h-86 lg:h-88 rounded-lg mb-4 overflow-hidden">
+                  <div className="w-full h-88 rounded-lg mb-4 overflow-hidden">
                     <img 
                       src={station.image} 
                       alt={station.title}
@@ -147,7 +147,162 @@ export default function RadioStationsSection() {
                   </p>
                 </motion.div>
               ))}
-              
+            </motion.div>
+          </div>
+          
+        </motion.div>
+
+        {/* Layout for carousel screens (1024px-1535px) - Text above, centered */}
+        <motion.div 
+          className="hidden lg:block 2xl:hidden space-y-12"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          
+          {/* Centered Content Above Carousel */}
+          <motion.div className="text-center max-w-4xl mx-auto space-y-6" variants={textVariants}>
+            <div className="relative">
+              <h2 className="font-roca text-3xl md:text-4xl lg:text-5xl leading-tight" style={{ color: 'var(--color-positivity-blue)' }}>
+                Over 50 Radio Stations News Free Commercial Free Listen Free
+              </h2>
+            </div>
+            
+            <p className="font-opensans text-lg leading-relaxed" style={{ color: 'var(--color-positivity-blue)' }}>
+              At Positivity Radio, we skip the news, ads and travel updates! Instead, we blend great music with uplifting, inspirational words — designed to motivate, calm, and empower. Whether you&apos;re seeking a boost, a moment of peace, or daily encouragement, every station is handcrafted to help you enjoy a more successful and fulfilled life.
+            </p>
+            
+            <p className="font-opensans text-lg leading-relaxed" style={{ color: 'var(--color-positivity-blue)' }}>
+              A wealth of scientific research demonstrates that the positive effects of radio extend far beyond entertainment, shifting your mindset and uplifting your day, allowing you to feel better and thrive.
+            </p>
+          </motion.div>
+
+          {/* Carousel for mid-range screens */}
+          <motion.div 
+            className="station-carousel"
+            variants={containerVariants}
+          >
+            {/* First group */}
+            <div className="station-carousel-group">
+              {stations.map((station, index) => (
+                <motion.div 
+                  key={`group1-${station.id}`} 
+                  className="station-card p-0 pb-2 text-center"
+                  variants={cardVariants}
+                  custom={index}
+                >
+                  <div className="w-full h-80 rounded-lg mb-4 overflow-hidden">
+                    <img 
+                      src={station.image} 
+                      alt={station.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-opensans text-sm font-semibold mb-2" style={{ color: 'var(--color-positivity-blue)' }}>
+                    {station.title}
+                  </h3>
+                  <p className="font-opensans text-xs" style={{ color: 'var(--color-positivity-blue)' }}>
+                    {station.description}
+                    {station.signature && (
+                      <span className="font-playlist italic">
+                        {' '}{station.signature}
+                      </span>
+                    )}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Duplicate group for seamless loop */}
+            <div className="station-carousel-group" aria-hidden="true">
+              {stations.map((station) => (
+                <div 
+                  key={`group2-${station.id}`} 
+                  className="station-card p-0 pb-2 text-center"
+                >
+                  <div className="w-full h-80 rounded-lg mb-4 overflow-hidden">
+                    <img 
+                      src={station.image} 
+                      alt={station.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-opensans text-sm font-semibold mb-2" style={{ color: 'var(--color-positivity-blue)' }}>
+                    {station.title}
+                  </h3>
+                  <p className="font-opensans text-xs" style={{ color: 'var(--color-positivity-blue)' }}>
+                    {station.description}
+                    {station.signature && (
+                      <span className="font-playlist italic">
+                        {' '}{station.signature}
+                      </span>
+                    )}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+          
+        </motion.div>
+
+        {/* Layout for smaller screens - Original grid */}
+        <motion.div 
+          className="lg:hidden grid lg:grid-cols-12 gap-12 items-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          
+          {/* Content */}
+          <motion.div className="lg:col-span-4 space-y-6" variants={textVariants}>
+            <div className="relative">
+              <h2 className="font-roca text-3xl md:text-4xl lg:text-5xl leading-tight" style={{ color: 'var(--color-positivity-blue)' }}>
+                Over 50 Radio Stations News Free Commercial Free Listen Free
+              </h2>
+            </div>
+            
+            <p className="font-opensans text-lg leading-relaxed" style={{ color: 'var(--color-positivity-blue)' }}>
+              At Positivity Radio, we skip the news, ads and travel updates! Instead, we blend great music with uplifting, inspirational words — designed to motivate, calm, and empower. Whether you&apos;re seeking a boost, a moment of peace, or daily encouragement, every station is handcrafted to help you enjoy a more successful and fulfilled life.
+            </p>
+            
+            <p className="font-opensans text-lg leading-relaxed" style={{ color: 'var(--color-positivity-blue)' }}>
+              A wealth of scientific research demonstrates that the positive effects of radio extend far beyond entertainment, shifting your mindset and uplifting your day, allowing you to feel better and thrive.
+            </p>
+          </motion.div>
+          
+          {/* Grid for smaller screens */}
+          <div className="lg:col-span-8">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              variants={containerVariants}
+            >
+              {stations.map((station, index) => (
+                <motion.div 
+                  key={station.id} 
+                  className="station-card p-4 text-center"
+                  variants={cardVariants}
+                  custom={index}
+                >
+                  <div className="w-full h-92 md:h-86 rounded-lg mb-4 overflow-hidden">
+                    <img 
+                      src={station.image} 
+                      alt={station.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-opensans text-sm font-semibold mb-2" style={{ color: 'var(--color-positivity-blue)' }}>
+                    {station.title}
+                  </h3>
+                  <p className="font-opensans text-xs" style={{ color: 'var(--color-positivity-blue)' }}>
+                    {station.description}
+                    {station.signature && (
+                      <span className="font-playlist italic">
+                        {' '}{station.signature}
+                      </span>
+                    )}
+                  </p>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
           
