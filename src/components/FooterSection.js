@@ -127,7 +127,7 @@ export default function FooterSection() {
           <motion.div className="flex items-center justify-center space-x-8" variants={itemVariants}>
             <div className="w-12 h-12 rounded-lg p-2">
               <img 
-                src="/images/footer/instagram-icon.svg" 
+                src="/images/footer/instagram-icon.png" 
                 alt="Instagram"
                 className="w-full h-full object-contain"
               />

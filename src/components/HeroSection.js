@@ -140,7 +140,7 @@ export default function HeroSection() {
         initial="hidden"
         animate="visible"
       >
-        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto mb-4">
+        <div className="w-20 h-20 overflow-hidden shadow-lg mx-auto mb-4">
           <img 
             src="/images/hero/noel-edmonds-circle.png" 
             alt="Noel Edmonds"
